@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/spawnpoint3enemy.gd" type="Script" id=1]
+[ext_resource path="res://scripts/spawnpointenemy.gd" type="Script" id=2]
+[ext_resource path="res://scripts/spawnpoint2enemy.gd" type="Script" id=3]
+[ext_resource path="res://scripts/spawnpoint4enemy.gd" type="Script" id=4]
+[ext_resource path="res://scripts/spawnpointenemy..gd" type="Script" id=5]
+[ext_resource path="res://pngs/shotgun.png" type="Texture" id=6]
+[ext_resource path="res://pngs/gun.png" type="Texture" id=7]
+[ext_resource path="res://scripts/bulletspawn enemy.gd" type="Script" id=8]
+[ext_resource path="res://scenes/bouncebullet.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Bullet.tscn" type="PackedScene" id=10]
+
+[node name="spawner" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 48, 0 )
+enabled = true
+cast_to = Vector2( 350, 0 )
+collision_mask = 16
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="gun1" type="KinematicBody2D" parent="."]
+position = Vector2( 96, 0 )
+scale = Vector2( 2, 2 )
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="gun1"]
+position = Vector2( -22, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="gun1"]
+position = Vector2( -46, 0 )
+scale = Vector2( 0.5, 0.5 )
+polygon = PoolVector2Array( -11, -7, -5, -7, -5, -6, 7, -6, 7, -5, 13, -5, 13, -4, 14, -4, 14, -3, 25, -3, 25, -4, 28, -4, 28, -5, 38, -5, 38, -4, 40, -4, 40, -3, 54, -3, 54, -5, 60, -5, 60, -4, 72, -4, 72, -3, 84, -3, 84, -2, 91, -2, 91, -1, 107, -1, 107, 1, 91, 1, 91, 2, 84, 2, 84, 3, 72, 3, 72, 4, 60, 4, 60, 5, 54, 5, 54, 3, 40, 3, 40, 4, 38, 4, 38, 5, 28, 5, 28, 4, 25, 4, 25, 3, 14, 3, 14, 4, 13, 4, 13, 5, 7, 5, 7, 6, -5, 6, -5, 7, -11, 7 )
+
+[node name="spawnpoint" type="Node2D" parent="gun1" groups=["spawnpoint"]]
+script = ExtResource( 2 )
+bulletScene = ExtResource( 10 )
+
+[node name="gun2" type="KinematicBody2D" parent="."]
+position = Vector2( 96, 0 )
+scale = Vector2( 2, 2 )
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="gun2"]
+position = Vector2( -22, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="gun2"]
+position = Vector2( -46, 0 )
+scale = Vector2( 0.5, 0.5 )
+polygon = PoolVector2Array( -11, -7, -5, -7, -5, -6, 7, -6, 7, -5, 13, -5, 13, -4, 14, -4, 14, -3, 25, -3, 25, -4, 28, -4, 28, -5, 38, -5, 38, -4, 40, -4, 40, -3, 54, -3, 54, -5, 60, -5, 60, -4, 72, -4, 72, -3, 84, -3, 84, -2, 91, -2, 91, -1, 107, -1, 107, 1, 91, 1, 91, 2, 84, 2, 84, 3, 72, 3, 72, 4, 60, 4, 60, 5, 54, 5, 54, 3, 40, 3, 40, 4, 38, 4, 38, 5, 28, 5, 28, 4, 25, 4, 25, 3, 14, 3, 14, 4, 13, 4, 13, 5, 7, 5, 7, 6, -5, 6, -5, 7, -11, 7 )
+
+[node name="spawnpoint" type="Node2D" parent="gun2" groups=["spawnpoint"]]
+position = Vector2( 0, -2 )
+script = ExtResource( 5 )
+bulletScene = ExtResource( 10 )
+
+[node name="spawnpoint2" type="Node2D" parent="gun2" groups=["spawnpoint"]]
+script = ExtResource( 3 )
+bulletScene = ExtResource( 10 )
+
+[node name="spawnpoint3" type="Node2D" parent="gun2" groups=["spawnpoint"]]
+position = Vector2( 0, 2 )
+script = ExtResource( 1 )
+bulletScene = ExtResource( 10 )
+
+[node name="gun3" type="KinematicBody2D" parent="."]
+position = Vector2( 96, 0 )
+scale = Vector2( 2, 2 )
+collision_layer = 0
+collision_mask = 0
+
+[node name="spawnpoint4" type="Node2D" parent="gun3" groups=["spawnpoint"]]
+script = ExtResource( 4 )
+bulletScene = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="gun3"]
+position = Vector2( -22, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="gun3"]
+position = Vector2( -46, 0 )
+scale = Vector2( 0.5, 0.5 )
+polygon = PoolVector2Array( -11, -7, -5, -7, -5, -6, 7, -6, 7, -5, 13, -5, 13, -4, 14, -4, 14, -3, 25, -3, 25, -4, 28, -4, 28, -5, 38, -5, 38, -4, 40, -4, 40, -3, 54, -3, 54, -5, 60, -5, 60, -4, 72, -4, 72, -3, 84, -3, 84, -2, 91, -2, 91, -1, 107, -1, 107, 1, 91, 1, 91, 2, 84, 2, 84, 3, 72, 3, 72, 4, 60, 4, 60, 5, 54, 5, 54, 3, 40, 3, 40, 4, 38, 4, 38, 5, 28, 5, 28, 4, 25, 4, 25, 3, 14, 3, 14, 4, 13, 4, 13, 5, 7, 5, 7, 6, -5, 6, -5, 7, -11, 7 )
+
+[connection signal="shootgun1" from="." to="gun1/spawnpoint" method="_on_Spawner_shootgun1"]
+[connection signal="shootgun2" from="." to="gun2/spawnpoint" method="_on_Spawner_shootgun2"]
+[connection signal="shootgun2" from="." to="gun2/spawnpoint2" method="_on_Spawner_shootgun2"]
+[connection signal="shootgun2" from="." to="gun2/spawnpoint3" method="_on_Spawner_shootgun2"]
+[connection signal="shootgun3" from="." to="gun3/spawnpoint4" method="_on_Spawner_shootgun3"]

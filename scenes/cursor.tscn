@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://pngs/cross.png" type="Texture" id=2]
+
+[node name="cursor" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.57079
+texture = ExtResource( 2 )
